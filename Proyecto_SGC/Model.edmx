@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="db_a82c1f_sgcModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Carrera">
+          <Key>
+            <PropertyRef Name="ID_Carrera" />
+          </Key>
+          <Property Name="ID_Carrera" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCarrera" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="ID_Curso" />
+          </Key>
+          <Property Name="ID_Curso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCurso" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Precio_Curso" Type="float" Nullable="false" />
+          <Property Name="Creditos" Type="int" Nullable="false" />
+          <Property Name="IdPlanEstudio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MetodoPago">
+          <Key>
+            <PropertyRef Name="ID_MetodoPago" />
+          </Key>
+          <Property Name="ID_MetodoPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Metodo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanEstudio">
+          <Key>
+            <PropertyRef Name="IdPlanEstudio" />
+          </Key>
+          <Property Name="IdPlanEstudio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombrePlanEstudio" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__Curso__IdPlanEst__44FF419A">
+          <End Role="PlanEstudio" Type="Self.PlanEstudio" Multiplicity="1" />
+          <End Role="Curso" Type="Self.Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanEstudio">
+              <PropertyRef Name="IdPlanEstudio" />
+            </Principal>
+            <Dependent Role="Curso">
+              <PropertyRef Name="IdPlanEstudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_a82c1f_sgcModel1StoreContainer">
+          <EntitySet Name="Carrera" EntityType="Self.Carrera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetodoPago" EntityType="Self.MetodoPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanEstudio" EntityType="Self.PlanEstudio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Curso__IdPlanEst__44FF419A" Association="Self.FK__Curso__IdPlanEst__44FF419A">
+            <End Role="PlanEstudio" EntitySet="PlanEstudio" />
+            <End Role="Curso" EntitySet="Curso" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_a82c1f_sgcModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="db_a82c1f_sgc" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carrera" EntityType="db_a82c1f_sgcModel1.Carrera" />
+          <EntitySet Name="Curso" EntityType="db_a82c1f_sgcModel1.Curso" />
+          <EntitySet Name="MetodoPago" EntityType="db_a82c1f_sgcModel1.MetodoPago" />
+          <EntitySet Name="PlanEstudio" EntityType="db_a82c1f_sgcModel1.PlanEstudio" />
+          <EntitySet Name="sysdiagrams" EntityType="db_a82c1f_sgcModel1.sysdiagrams" />
+          <AssociationSet Name="FK__Curso__IdPlanEst__44FF419A" Association="db_a82c1f_sgcModel1.FK__Curso__IdPlanEst__44FF419A">
+            <End Role="PlanEstudio" EntitySet="PlanEstudio" />
+            <End Role="Curso" EntitySet="Curso" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Carrera">
+          <Key>
+            <PropertyRef Name="ID_Carrera" />
+          </Key>
+          <Property Name="ID_Carrera" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCarrera" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Curso">
+          <Key>
+            <PropertyRef Name="ID_Curso" />
+          </Key>
+          <Property Name="ID_Curso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCurso" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Precio_Curso" Type="Double" Nullable="false" />
+          <Property Name="Creditos" Type="Int32" Nullable="false" />
+          <Property Name="IdPlanEstudio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PlanEstudio" Relationship="db_a82c1f_sgcModel1.FK__Curso__IdPlanEst__44FF419A" FromRole="Curso" ToRole="PlanEstudio" />
+        </EntityType>
+        <EntityType Name="MetodoPago">
+          <Key>
+            <PropertyRef Name="ID_MetodoPago" />
+          </Key>
+          <Property Name="ID_MetodoPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Metodo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PlanEstudio">
+          <Key>
+            <PropertyRef Name="IdPlanEstudio" />
+          </Key>
+          <Property Name="IdPlanEstudio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePlanEstudio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Curso" Relationship="db_a82c1f_sgcModel1.FK__Curso__IdPlanEst__44FF419A" FromRole="PlanEstudio" ToRole="Curso" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__Curso__IdPlanEst__44FF419A">
+          <End Type="db_a82c1f_sgcModel1.PlanEstudio" Role="PlanEstudio" Multiplicity="1" />
+          <End Type="db_a82c1f_sgcModel1.Curso" Role="Curso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanEstudio">
+              <PropertyRef Name="IdPlanEstudio" />
+            </Principal>
+            <Dependent Role="Curso">
+              <PropertyRef Name="IdPlanEstudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_a82c1f_sgcModel1StoreContainer" CdmEntityContainer="db_a82c1f_sgc">
+          <EntitySetMapping Name="Carrera">
+            <EntityTypeMapping TypeName="db_a82c1f_sgcModel1.Carrera">
+              <MappingFragment StoreEntitySet="Carrera">
+                <ScalarProperty Name="NombreCarrera" ColumnName="NombreCarrera" />
+                <ScalarProperty Name="ID_Carrera" ColumnName="ID_Carrera" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Curso">
+            <EntityTypeMapping TypeName="db_a82c1f_sgcModel1.Curso">
+              <MappingFragment StoreEntitySet="Curso">
+                <ScalarProperty Name="IdPlanEstudio" ColumnName="IdPlanEstudio" />
+                <ScalarProperty Name="Creditos" ColumnName="Creditos" />
+                <ScalarProperty Name="Precio_Curso" ColumnName="Precio_Curso" />
+                <ScalarProperty Name="NombreCurso" ColumnName="NombreCurso" />
+                <ScalarProperty Name="ID_Curso" ColumnName="ID_Curso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetodoPago">
+            <EntityTypeMapping TypeName="db_a82c1f_sgcModel1.MetodoPago">
+              <MappingFragment StoreEntitySet="MetodoPago">
+                <ScalarProperty Name="Nombre_Metodo" ColumnName="Nombre_Metodo" />
+                <ScalarProperty Name="ID_MetodoPago" ColumnName="ID_MetodoPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanEstudio">
+            <EntityTypeMapping TypeName="db_a82c1f_sgcModel1.PlanEstudio">
+              <MappingFragment StoreEntitySet="PlanEstudio">
+                <ScalarProperty Name="NombrePlanEstudio" ColumnName="NombrePlanEstudio" />
+                <ScalarProperty Name="IdPlanEstudio" ColumnName="IdPlanEstudio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db_a82c1f_sgcModel1.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

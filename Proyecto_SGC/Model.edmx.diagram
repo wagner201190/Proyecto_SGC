@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6db9b8f63f3d44a68856661409c3be2f" Name="Diagram1">
+        <EntityTypeShape EntityType="db_a82c1f_sgcModel1.Carrera" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="db_a82c1f_sgcModel1.Curso" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="db_a82c1f_sgcModel1.MetodoPago" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="db_a82c1f_sgcModel1.PlanEstudio" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="db_a82c1f_sgcModel1.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" />
+        <AssociationConnector Association="db_a82c1f_sgcModel1.FK__Curso__IdPlanEst__44FF419A" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
