@@ -26,7 +26,7 @@
                     <ul class="nav navbar-nav">
 
                         <li class="Dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Carreras<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 @if (User.IsInRole("Admin") || (User.IsInRole("Academico")))
                                 {
@@ -34,11 +34,14 @@
                                 }
                                 @if (User.IsInRole("Admin"))
                                 {
+                           
                                     <li class="menu-item">@Html.ActionLink("Cursos", "Index", "Curso")</li>
+                                    <li class="menu-item">@Html.ActionLink("Registro de Usuarios", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                                 }
                                 <li class="divider"></li>
                                 <li></li>
                             </ul>
+
                         </li>
                     </ul>
                 }
