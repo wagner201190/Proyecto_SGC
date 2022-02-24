@@ -305,6 +305,7 @@
     <Content Include="Views\PlanEstudio\Details.cshtml" />
     <Content Include="Views\PlanEstudio\Edit.cshtml" />
     <Content Include="Views\PlanEstudio\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PlanEstudio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
