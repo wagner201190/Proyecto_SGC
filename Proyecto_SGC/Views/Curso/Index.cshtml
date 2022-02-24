@@ -7,47 +7,54 @@
 
 <h2>Cursos</h2>
 
-<p>
-    @Html.ActionLink("Crear", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Nombre
-        </th>
-        <th>
-            Precio
-        </th>
-        <th>
-            Créditos
-        </th>
-        <th>
-            Plan de Estudio
-        </th>
-        <th></th>
-    </tr>
+@if (User.IsInRole("Admin"))
+{
 
-    @foreach (var item in Model)
-    {
+    <p>
+        @Html.ActionLink("Crear", "Create")
+    </p>
+}
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCurso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio_Curso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Creditos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlanEstudio.NombrePlanEstudio)
-            </td>
-            <td>
-                @Html.ActionLink("Modificar", "Edit", new { id = item.ID_Curso }) |
-                @Html.ActionLink("Ver", "Details", new { id = item.ID_Curso }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Curso })
-            </td>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Precio
+            </th>
+            <th>
+                Créditos
+            </th>
+            <th>
+                Plan de Estudio
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCurso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio_Curso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Creditos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlanEstudio.NombrePlanEstudio)
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Modificar", "Edit", new { id = item.ID_Curso }) |
+                        @Html.ActionLink("Ver", "Details", new { id = item.ID_Curso }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_Curso })
+                    </td>
+                }
+            </tr>
+        }
+
+    </table>
