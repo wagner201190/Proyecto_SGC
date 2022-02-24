@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Proyecto_SGC.Models;
+using System.Net;
+using System.Net.Mail;
 
 namespace Proyecto_SGC
 {
@@ -18,10 +20,40 @@ namespace Proyecto_SGC
     {
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+
+            return configSendGridasyncAsync(message);
+        }
+
+        private async Task configSendGridasyncAsync(IdentityMessage message)
+        {
+            var AdminUser = "seminariometodistacrc@outlook.com";
+            var AdminPassword = "Fide2022..";
+            var SMTPName = "smtp-mail.outlook.com";
+            var SMTPPort = "587";
+            var Mensaje = new MailMessage();
+            Mensaje.To.Add(new MailAddress(message.Destination));
+            Mensaje.From = new MailAddress(AdminUser);
+            Mensaje.Subject = message.Subject;
+            Mensaje.Body = message.Body;
+            Mensaje.IsBodyHtml = true;
+
+            using (var smtp = new SmtpClient())
+            {
+                var credencial = new NetworkCredential
+                {
+                    UserName = AdminUser,
+                    Password = AdminPassword,
+                };
+
+                smtp.Credentials = credencial;
+                smtp.Host = SMTPName;
+                smtp.Port = int.Parse(SMTPPort);
+                smtp.EnableSsl = true;
+                await smtp.SendMailAsync(Mensaje);
+            }
         }
     }
+
 
     public class SmsService : IIdentityMessageService
     {
