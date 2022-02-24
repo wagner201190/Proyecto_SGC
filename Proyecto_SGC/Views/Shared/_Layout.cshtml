@@ -20,13 +20,29 @@
                 @Html.ActionLink("Seminario Metodista", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
 
-                    <li>@Html.ActionLink("Usuarios", "About", "Home")</li>
-                    <li>@Html.ActionLink("Matrícula", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Cursos", "Index", "Curso")</li>
-                    <li>@Html.ActionLink("Planes de Estudio", "Index", "PlanEstudio")</li>
-                </ul>
+                @if ((User.Identity.IsAuthenticated))
+                {
+                    <ul class="nav navbar-nav">
+
+                        <li class="Dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Carreras<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                @if (User.IsInRole("Admin") || (User.IsInRole("Academico")))
+                                {
+                                    <li class="menu-item">@Html.ActionLink("Planes de Estudio", "Index", "PlanEstudio")</li>
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li class="menu-item">@Html.ActionLink("Cursos", "Index", "Curso")</li>
+                                }
+                                <li class="divider"></li>
+                                <li></li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
+                
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
