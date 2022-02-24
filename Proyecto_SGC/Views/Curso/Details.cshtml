@@ -1,0 +1,51 @@
+﻿@model Proyecto_SGC.Curso
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Curso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreCurso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreCurso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio_Curso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio_Curso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Creditos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Creditos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlanEstudio.NombrePlanEstudio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlanEstudio.NombrePlanEstudio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Curso }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
