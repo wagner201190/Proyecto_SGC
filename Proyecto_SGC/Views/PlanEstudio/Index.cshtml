@@ -25,9 +25,9 @@
                 @Html.DisplayFor(modelItem => item.NombrePlanEstudio)
             </td>
             <td>
-                @Html.ActionLink("Modificar", "Edit", new { id = item.IdPlanEstudio }) |
-                @Html.ActionLink("Ver", "Details", new { id = item.IdPlanEstudio }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdPlanEstudio })
+                @Html.ActionLink("Ver", "Details", new { id = item.IdPlanEstudio }, new { @class = " btn btn-warning" })
+                @Html.ActionLink("Modificar", "Edit", new { id = item.IdPlanEstudio }, new { @class = " btn btn-info" })
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdPlanEstudio }, new { @class = " btn btn-danger", @data_toggle = "modal", @data_target = "#deleteDepartamento" })
             </td>
         </tr>
     }

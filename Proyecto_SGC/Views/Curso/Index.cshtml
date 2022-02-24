@@ -8,7 +8,7 @@
 <div class="grid-body">
     <h2>Cursos</h2>
 
-    @if (User.IsInRole("Admin"))
+    @if (User.IsInRole("Academico"))
     {
 
         <p>
@@ -47,7 +47,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PlanEstudio.NombrePlanEstudio)
             </td>
-            @if (User.IsInRole("Admin"))
+            @if (User.IsInRole("Academico"))
             {
                 <td class="pull-right">
 

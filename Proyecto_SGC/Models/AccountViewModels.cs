@@ -70,9 +70,9 @@ namespace Proyecto_SGC.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = " De {0} hasta almenos {6} caracteres de longitud.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = " De {0} hasta almenos {2} caracteres de longitud.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
@@ -89,7 +89,7 @@ namespace Proyecto_SGC.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = " De {0} hasta almenos {6} caracteres de longitud.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = " De {0} hasta almenos {2} caracteres de longitud.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
